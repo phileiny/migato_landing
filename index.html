@@ -121,6 +121,8 @@
   .lore h2{color:#fff;font-size:clamp(24px,3.2vw,32px);margin-bottom:16px}
   .lore p{color:#cdc3b4;font-size:16px;margin-bottom:14px}
   .lore img{border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lore-video{position:relative;width:100%;max-width:300px;margin:0 auto;aspect-ratio:9/16;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lore-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .lore .tag{color:var(--orange);font-weight:700;letter-spacing:.06em;font-size:14px}
 
   /* ---- Price / 早鳥 ---- */
@@ -244,7 +246,11 @@
       <p>故事始於一間西班牙老太太的塔羅占卜室。那一天，琦琦抽到了那張「命運之輪」—— Migato 的故事，從這裡開始。</p>
       <p><strong style="color:#fff">《Migato 的轉動之輪》</strong>，一個正在展開的世界。</p>
     </div>
-    <div><img src="assets/migato-origin.png" alt="Migato 起源故事 —— 琦琦在西班牙老太太的塔羅占卜室抽到命運之輪"></div>
+    <div>
+      <div class="lore-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/_AZWJJPIxA4" title="《Migato 的轉動之輪》— Migato 起源動畫" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
   </div>
 </section>
 
