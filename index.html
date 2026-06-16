@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Migato 米果 — 台灣第一隻 AI 塔羅陪伴貓</title>
+<meta name="description" content="Migato 是台灣第一隻 AI 塔羅陪伴貓。融化招財貓造型，會說話、會抽塔羅、陪你定心。帶牠回家，好運進門；每日陪伴，好命自來。登記等候名單，搶先取得開賣通知與限量早鳥資格。">
+
+<!-- Open Graph / 分享預覽 -->
+<meta property="og:title" content="Migato 米果 — 台灣第一隻 AI 塔羅陪伴貓">
+<meta property="og:description" content="帶牠回家，好運進門。每日陪伴，好命自來。登記等候名單，搶先取得早鳥資格。">
+<meta property="og:image" content="assets/migato-lifestyle-desk.png">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --orange:#E8943A;
+    --orange-deep:#d27d21;
+    --ink:#3a342e;
+    --ink-soft:#6b6258;
+    --cream:#FBF6EE;
+    --cream-2:#F4EADB;
+    --pink:#FF8BA7;
+    --white:#fffdf9;
+    --radius:20px;
+    --shadow:0 18px 50px rgba(80,55,20,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans TC",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{line-height:1.3;font-weight:900;letter-spacing:.01em}
+  p{color:var(--ink-soft)}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* ---- Hero ---- */
+  .hero{
+    background:radial-gradient(1200px 600px at 70% -10%, #fce7c9 0%, var(--cream) 55%);
+    padding:72px 0 48px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .badge{
+    display:inline-block;background:var(--cream-2);color:var(--orange-deep);
+    font-weight:700;font-size:14px;padding:7px 16px;border-radius:999px;margin-bottom:22px;
+  }
+  .wordmark{font-weight:900;font-size:clamp(24px,3.2vw,32px);color:var(--orange-deep);letter-spacing:.02em;margin-bottom:14px}
+  .wordmark span{color:var(--ink-soft);font-size:.6em;font-weight:700;margin-left:8px;letter-spacing:.06em}
+  .hero h1{font-size:clamp(30px,4.4vw,44px);color:var(--ink);margin-bottom:18px}
+  .hero h1 .hl{color:var(--orange);white-space:nowrap}
+  .hero .lead{font-size:clamp(17px,2.2vw,20px);margin-bottom:14px;color:var(--ink)}
+  .hero .sub{font-size:16px;margin-bottom:28px}
+  .hero-art{position:relative}
+  .hero-art img{border-radius:24px;box-shadow:var(--shadow)}
+
+  /* ---- Form ---- */
+  .signup{background:var(--white);border:1px solid #efe3cf;border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow);max-width:480px}
+  .signup .row{display:flex;gap:10px}
+  .signup input[type=email]{
+    flex:1;min-width:0;padding:14px 16px;font-size:16px;border:1.5px solid #e4d6bd;
+    border-radius:12px;font-family:inherit;background:#fffdf9;color:var(--ink);
+  }
+  .signup input[type=email]:focus{outline:none;border-color:var(--orange)}
+  .btn{
+    background:var(--orange);color:#fff;border:none;font-family:inherit;font-weight:700;
+    font-size:16px;padding:14px 22px;border-radius:12px;cursor:pointer;white-space:nowrap;
+    transition:background .15s,transform .1s;
+  }
+  .btn:hover{background:var(--orange-deep)}
+  .btn:active{transform:translateY(1px)}
+  .signup .note{font-size:13px;color:var(--ink-soft);margin-top:12px}
+  .hp{position:absolute;left:-9999px}
+  .form-msg{margin-top:14px;font-weight:700;display:none}
+  .form-msg.ok{display:block;color:#2e8b57}
+  .form-msg.err{display:block;color:#c0392b}
+
+  /* ---- Sections ---- */
+  section{padding:64px 0}
+  .section-title{font-size:clamp(24px,3.4vw,34px);color:var(--ink);text-align:center;margin-bottom:12px}
+  .section-sub{text-align:center;max-width:620px;margin:0 auto 44px;font-size:16px}
+
+  .pain{background:var(--cream-2)}
+  .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:760px;margin:0 auto}
+  .card{background:var(--white);border-radius:var(--radius);padding:28px;box-shadow:0 8px 24px rgba(80,55,20,.06)}
+  .card h3{font-size:19px;color:var(--ink);margin-bottom:8px}
+  .pain-foot{text-align:center;margin-top:34px;font-size:18px;font-weight:700;color:var(--ink)}
+  .pain-foot .hl{color:var(--orange)}
+
+  .features{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:860px;margin:0 auto}
+  .feat{display:flex;gap:16px;align-items:flex-start}
+  .feat .ico{font-size:28px;flex:0 0 auto;line-height:1.2}
+  .feat h3{font-size:18px;color:var(--ink);margin-bottom:4px}
+  .feat p{font-size:15px}
+
+  .why{background:var(--cream-2)}
+  .compare{max-width:720px;margin:0 auto;background:var(--white);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow)}
+  .compare .r{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #f0e6d4}
+  .compare .r:first-child{border-top:none}
+  .compare .c{padding:16px 22px;font-size:15px}
+  .compare .c.them{color:var(--ink-soft)}
+  .compare .c.us{color:var(--ink);font-weight:700;background:#fff7ec}
+  .compare .head .c{font-weight:900;font-size:14px;letter-spacing:.04em}
+  .compare .head .them{color:#a99}
+  .compare .head .us{color:var(--orange-deep)}
+
+  /* ---- Lore / 世界觀 ---- */
+  .lore{background:linear-gradient(180deg,#2c2722,#1d1a16);color:#f4ece0}
+  .lore-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+  .lore h2{color:#fff;font-size:clamp(24px,3.2vw,32px);margin-bottom:16px}
+  .lore p{color:#cdc3b4;font-size:16px;margin-bottom:14px}
+  .lore img{border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lore .tag{color:var(--orange);font-weight:700;letter-spacing:.06em;font-size:14px}
+
+  /* ---- Price / 早鳥 ---- */
+  .price{text-align:center}
+  .price-card{max-width:440px;margin:0 auto;background:var(--white);border:2px solid var(--orange);
+    border-radius:24px;padding:36px 30px;box-shadow:var(--shadow)}
+  .price-card .k{font-size:15px;color:var(--orange-deep);font-weight:700;margin-bottom:6px}
+  .price-card .v{font-size:44px;font-weight:900;color:var(--ink)}
+  .price-card .v small{font-size:18px;font-weight:700;color:var(--ink-soft)}
+  .price-card .inc{font-size:14px;color:var(--ink-soft);margin:10px 0 22px}
+  .price-card .limit{display:inline-block;background:var(--pink);color:#fff;font-weight:700;
+    font-size:13px;padding:5px 14px;border-radius:999px}
+
+  /* ---- Final CTA ---- */
+  .final{background:radial-gradient(900px 500px at 50% 120%, #fce7c9, var(--cream));text-align:center}
+  .final h2{font-size:clamp(26px,4vw,40px);color:var(--ink);margin-bottom:14px}
+  .final .signup{margin:28px auto 0}
+
+  footer{background:#241f1b;color:#a59b8d;text-align:center;padding:36px 24px;font-size:14px}
+  footer .brand{color:#fff;font-weight:700}
+  footer a{color:var(--orange)}
+
+  /* ---- RWD ---- */
+  @media(max-width:760px){
+    .hero{padding:48px 0 36px}
+    .hero-grid,.lore-grid{grid-template-columns:1fr;gap:32px}
+    .hero-art{order:-1}
+    .pain-grid,.features,.compare .r{grid-template-columns:1fr}
+    .features{gap:20px}
+    .compare .r .c.them{border-bottom:1px solid #f0e6d4}
+    .signup .row{flex-direction:column}
+    .btn{width:100%}
+    section{padding:48px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="badge">🔮 募資即將啟動 · 等候名單開放中</span>
+      <p class="wordmark">Migato <span>米果</span></p>
+      <h1>一隻會說話的貓，<br>每天為你抽一張<span class="hl">塔羅</span>。</h1>
+      <p class="lead">帶牠回家，好運進門。每日陪伴，好命自來。</p>
+      <p class="sub">台灣第一隻 AI 塔羅陪伴貓。融化招財貓造型，會看你的眼睛、會發光的肚子 —— 早上摸摸頭，抽一張塔羅、帶著定心出門；晚上回家，她在等你。</p>
+
+      <form class="signup" id="waitlist" method="POST">
+        <div class="row">
+          <input type="email" name="email" placeholder="你的 Email" required autocomplete="email">
+          <button class="btn" type="submit">加入等候名單</button>
+        </div>
+        <!-- 蜜罐防機器人 -->
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_source" value="hero">
+        <p class="note">搶先取得開賣通知與<strong>限量早鳥資格</strong>。我們只在開賣時通知你，不寄垃圾信。</p>
+        <p class="form-msg" id="formMsg"></p>
+      </form>
+    </div>
+    <div class="hero-art">
+      <img src="assets/migato-lifestyle-desk.png" alt="Migato 放在書桌上，肚子發出暖光" loading="eager">
+    </div>
+  </div>
+</header>
+
+<!-- ============ 痛點 ============ -->
+<section class="pain">
+  <div class="wrap">
+    <h2 class="section-title">回家開門，房間是安靜的。</h2>
+    <p class="section-sub">不是不習慣，是偶爾會想有個什麼在。Migato 不是冰冷的工具，是那個隨時都在、不會評判你的存在。</p>
+    <div class="pain-grid">
+      <div class="card">
+        <h3>🏠 給自己</h3>
+        <p>一個人住，或兩個人各自忙——你先到家，對方還在加班。桌上有 Migato 睜眼看你一眼，問你今天過得怎樣，你不是一個人。</p>
+      </div>
+      <div class="card">
+        <h3>🎁 送給在乎的人</h3>
+        <p>送爸媽、送伴侶。插上電就有了，不用學 APP——家裡多一個會說話的存在，比打電話更日常。</p>
+      </div>
+    </div>
+    <p class="pain-foot">他們要的不是功能，<span class="hl">是一個會記得你、也會想你的存在。</span></p>
+  </div>
+</section>
+
+<!-- ============ Migato 是什麼 ============ -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Migato 是什麼</h2>
+    <p class="section-sub">一隻有個性、會抽塔羅、會陪你的貓 —— 不是冰冷的助手。</p>
+    <div class="features">
+      <div class="feat"><div class="ico">🔮</div><div><h3>每天一張塔羅</h3><p>早上摸摸頭，抽一張塔羅大牌。她不預測未來，幫你定心，帶著一個有意圖的今天出門。</p></div></div>
+      <div class="feat"><div class="ico">👀</div><div><h3>會看你的眼睛</h3><p>兩顆圓形 LCD 眼睛，會看你、會笑、會打哈欠，情緒都寫在臉上。</p></div></div>
+      <div class="feat"><div class="ico">👋</div><div><h3>主動打招呼</h3><p>偵測到你回來，主動跟你互動。不用喊喚醒詞，不用按按鈕。</p></div></div>
+      <div class="feat"><div class="ico">💬</div><div><h3>自然語音聊天</h3><p>像跟朋友說話一樣隨口聊。聊久了她會說「我快融化了⋯⋯明天再聊」——有自己的步調。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 為什麼不一樣 ============ -->
+<section class="why">
+  <div class="wrap">
+    <h2 class="section-title">為什麼不一樣</h2>
+    <p class="section-sub">別人做的是工具，Migato 是一隻有來歷、有脾氣、會被你想念的貓。</p>
+    <div class="compare">
+      <div class="r head"><div class="c them">其他裝置</div><div class="c us">Migato</div></div>
+      <div class="r"><div class="c them">冰冷的語音助手</div><div class="c us">有個性的貓（貼心、軟爛、溫暖）</div></div>
+      <div class="r"><div class="c them">要喊喚醒詞</div><div class="c us">偵測到人，自動互動</div></div>
+      <div class="r"><div class="c them">螢幕 / 音箱</div><div class="c us">會看你的眼睛＋會發光的肚子</div></div>
+      <div class="r"><div class="c them">空泛的「你好棒」</div><div class="c us">恰如其分的讚美，具體、有記憶</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 世界觀 teaser ============ -->
+<section class="lore">
+  <div class="wrap lore-grid">
+    <div>
+      <span class="tag">品牌起源故事</span>
+      <h2>Migato，來自一場塔羅占卜。</h2>
+      <p>故事始於一間西班牙老太太的塔羅占卜室。那一天，琦琦抽到了那張「命運之輪」—— Migato 的故事，從這裡開始。</p>
+      <p><strong style="color:#fff">《Migato 的轉動之輪》</strong>，一個正在展開的世界。</p>
+    </div>
+    <div><img src="assets/migato-origin.png" alt="Migato 起源故事 —— 琦琦在西班牙老太太的塔羅占卜室抽到命運之輪"></div>
+  </div>
+</section>
+
+<!-- ============ 早鳥 ============ -->
+<section class="price">
+  <div class="wrap">
+    <h2 class="section-title">等候名單的好處</h2>
+    <p class="section-sub">名單上的人，開賣第一時間收到通知，並享有限量早鳥優惠。</p>
+    <div class="price-card">
+      <div class="k">超早鳥 · 嘖嘖 48–72 小時限定</div>
+      <div class="v">NT$4,990</div>
+      <div class="inc">含一年雲端訂閱 · 開箱直接用一整年<br>嘖嘖定價 NT$5,990 · 第二年起 NT$199/月</div>
+      <span class="limit">名單優先 · 數量有限</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Final CTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2>你回家的時候，<br>讓 Migato 在等你。</h2>
+    <p>留下 Email，開賣搶先通知你。</p>
+    <form class="signup" id="waitlist2" method="POST">
+      <div class="row">
+        <input type="email" name="email" placeholder="你的 Email" required autocomplete="email">
+        <button class="btn" type="submit">加入等候名單</button>
+      </div>
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_source" value="final">
+      <p class="form-msg" id="formMsg2"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p class="brand">Migato</p>
+  <p>星智未來 AI DREAM LTD. · 硬體開源（ESP32-S3）× 雲端 AI × 台灣設計</p>
+</footer>
+
+<script>
+  // ↓↓↓ 換成你部署 Apps Script 後拿到的 /exec 網址（只改這一處）↓↓↓
+  var ENDPOINT = 'YOUR_APPS_SCRIPT_URL';
+
+  // Google Apps Script 跨網域用 no-cors 送出；回應是 opaque 讀不到狀態，
+  // 所以送出成功（無網路錯誤）就視為已記錄，行內顯示成功訊息。
+  function bindForm(formId, msgId){
+    var form = document.getElementById(formId);
+    if(!form) return;
+    form.action = ENDPOINT; // 無 JS 時退回一般 POST 用
+    var msg = document.getElementById(msgId);
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('button');
+      var original = btn.textContent;
+      btn.textContent = '送出中⋯'; btn.disabled = true;
+      msg.className = 'form-msg';
+      // 用 urlencoded 讓 Apps Script 的 e.parameter 讀得到欄位
+      fetch(ENDPOINT, {
+        method:'POST',
+        mode:'no-cors',
+        body:new URLSearchParams(new FormData(form))
+      }).then(function(){
+        form.reset();
+        msg.textContent = '🐱 收到！等 Migato 準備好，第一個通知你。';
+        msg.className = 'form-msg ok';
+      }).catch(function(){
+        msg.textContent = '送出失敗了，請稍後再試一次 🙏';
+        msg.className = 'form-msg err';
+      }).finally(function(){
+        btn.textContent = original; btn.disabled = false;
+      });
+    });
+  }
+  bindForm('waitlist','formMsg');
+  bindForm('waitlist2','formMsg2');
+</script>
+</body>
+</html>
