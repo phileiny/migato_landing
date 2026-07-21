@@ -296,6 +296,21 @@
   // ↓↓↓ 換成你部署 Apps Script 後拿到的 /exec 網址（只改這一處）↓↓↓
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbySSI3nmMY6FpldLlvyK5hmA-ed4J25-6mWfCkqEnZlY_eJvHv9Yv4Na9gawxy41t1p/exec';
 
+  // 漏斗埋點：送到 migato-ai（跨源，已加 CORS 白名單）。fire-and-forget，掛了不影響表單。
+  // src 分辨從哪進來（LINE 選單 / 歡迎訊息…）；歸因逐人需連結帶 id，現階段先拿聚合。
+  var EVENTS = 'https://tarot.aidream.com.tw/api/v1/tarot/events';
+  var SRC = new URLSearchParams(location.search).get('src') || 'direct';
+  function track(type){
+    try{
+      fetch(EVENTS, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({ event_type:type, metadata:{ src:SRC } }),
+        keepalive:true            // 送出後即使跳頁也送得完
+      }).catch(function(){});
+    }catch(e){}
+  }
+
   // Google Apps Script 跨網域用 no-cors 送出；回應是 opaque 讀不到狀態，
   // 所以送出成功（無網路錯誤）就視為已記錄，行內顯示成功訊息。
   function bindForm(formId, msgId){
@@ -315,6 +330,7 @@
         mode:'no-cors',
         body:new URLSearchParams(new FormData(form))
       }).then(function(){
+        track('waitlist_submit');
         form.reset();
         msg.textContent = '🐱 收到！等 Migato 準備好，第一個通知你。';
         msg.className = 'form-msg ok';
@@ -328,6 +344,7 @@
   }
   bindForm('waitlist','formMsg');
   bindForm('waitlist2','formMsg2');
+  track('waitlist_view');   // 進頁＝漏斗最底層曝光
 </script>
 </body>
 </html>
