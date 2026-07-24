@@ -297,15 +297,19 @@
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbySSI3nmMY6FpldLlvyK5hmA-ed4J25-6mWfCkqEnZlY_eJvHv9Yv4Na9gawxy41t1p/exec';
 
   // 漏斗埋點：送到 migato-ai（跨源，已加 CORS 白名單）。fire-and-forget，掛了不影響表單。
-  // src 分辨從哪進來（LINE 選單 / 歡迎訊息…）；歸因逐人需連結帶 id，現階段先拿聚合。
+  // src 分辨從哪進來（LINE 選單 / 歡迎訊息…）；u=<line_sub> 由歡迎訊息帶入 → 逐人歸因。
   var EVENTS = 'https://tarot.aidream.com.tw/api/v1/tarot/events';
-  var SRC = new URLSearchParams(location.search).get('src') || 'direct';
+  var Q = new URLSearchParams(location.search);
+  var SRC = Q.get('src') || 'direct';
+  var LINE_SUB = Q.get('u') || null;   // 歡迎訊息 3 帶的 line_sub；選單靜態連結不帶（聚合）
   function track(type){
     try{
+      var meta = { src:SRC };
+      if(LINE_SUB) meta.line_sub = LINE_SUB;
       fetch(EVENTS, {
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({ event_type:type, metadata:{ src:SRC } }),
+        body:JSON.stringify({ event_type:type, metadata:meta }),
         keepalive:true            // 送出後即使跳頁也送得完
       }).catch(function(){});
     }catch(e){}
